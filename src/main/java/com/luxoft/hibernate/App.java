@@ -22,6 +22,8 @@ public class App {
 
         StudentDao dao = context.getBean(StudentDao.class);
 
+        Student student = new Student(1, 12, "misah", "spgu", Date);
+
         System.out.println(dao.getAllStudents());
 
         //System.out.println(dao.getAllInstruments());
