@@ -7,6 +7,7 @@ import com.luxoft.hibernate.dao.entity.PerformanceParticipants;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Set;
 
@@ -14,8 +15,10 @@ import java.util.Set;
 @Table(name = "STUDENT")
 public class Student implements Serializable {
 
+
     @Id
     @Column
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @ManyToOne(targetEntity = Instrument.class)
     private Instrument instrument;
@@ -26,15 +29,11 @@ public class Student implements Serializable {
     @Column(name = "BIRTH_DATE")
     private Date birthDate;
 
-    public Student(long id, Instrument instrument, String firstName, String lastName, Date birth_date) {
-        this.id = id;
-        this.instrument = instrument;
+    public Student(String firstName, String lastName, Date birthDate) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthDate = birth_date;
+        this.birthDate = birthDate;
     }
-
-
 
     public long getId() {
         return id;
@@ -97,6 +96,5 @@ public class Student implements Serializable {
                 ", birthDate=" + birthDate +
                 '}';
     }
-
 
 }

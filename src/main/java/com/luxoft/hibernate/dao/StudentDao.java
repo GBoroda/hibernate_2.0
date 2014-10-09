@@ -15,4 +15,5 @@ public interface StudentDao {
 
     List<Student> getAllStudentWithInstrument(String instrument);
 
+    Student addStudent(String firstName, String lastName, Date birth_date);
 }
