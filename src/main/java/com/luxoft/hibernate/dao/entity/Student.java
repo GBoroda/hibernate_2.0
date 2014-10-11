@@ -29,6 +29,10 @@ public class Student implements Serializable {
     @Column(name = "BIRTH_DATE")
     private Date birthDate;
 
+    public Student() {
+
+    }
+
     public Student(String firstName, String lastName, Date birthDate) {
         this.firstName = firstName;
         this.lastName = lastName;
