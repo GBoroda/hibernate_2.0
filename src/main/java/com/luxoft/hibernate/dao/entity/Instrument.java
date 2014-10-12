@@ -32,6 +32,11 @@ public class Instrument {
     private List<Student> students;
 
     public Instrument() {
+
+    }
+
+    public Instrument(String type, String producer, Date prodDate, Date purchDate) {
+
     }
 
     public Instrument(String type) {

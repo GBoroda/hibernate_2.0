@@ -49,7 +49,6 @@ public class Student implements Serializable {
     public Instrument getInstrument() {
         return instrument;
     }
-
     public void setInstrument(Instrument instrument) {
         this.instrument = instrument;
     }
