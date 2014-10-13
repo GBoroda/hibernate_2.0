@@ -15,6 +15,7 @@ public class Performance implements Serializable {
 
     @Id
     @Column
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     @Id
     @Column

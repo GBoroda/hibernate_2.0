@@ -13,6 +13,7 @@ public interface SchoolDao {
     List<Student> getAllStudents();
     List<Student> getAllStudentWithInstrument(String instrument);
     void removeStudent(Student student);
+    void addStudentToPerformance(Performance performance, Student student);
 
 
     List<Student> getByInstrumentProdDate(Date prodDate);

@@ -77,6 +77,12 @@ public class SchoolDaoImpl implements SchoolDao {
     }
 
     @Override
+    public void addStudentToPerformance(Performance performance, Student student) {
+        getAllStudents().add(student);
+        savePerformance(performance);
+    }
+
+    @Override
     @Transactional(readOnly = false)
     public Long addStudent(String firstName, String lastName, Date birth_date) {
         Student student = new Student(firstName, lastName, birth_date);

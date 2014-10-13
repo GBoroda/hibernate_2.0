@@ -2,6 +2,7 @@ package com.luxoft.hibernate;
 
 import com.luxoft.hibernate.dao.SchoolDao;
 import com.luxoft.hibernate.dao.entity.Instrument;
+import com.luxoft.hibernate.dao.entity.Performance;
 import com.luxoft.hibernate.dao.entity.Student;
 import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.ParseException;
 import org.h2.command.dml.Insert;
@@ -24,19 +25,21 @@ public class App {
 
 
         // добавление нового студента
-        Format fmt = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = new Date();
-        date = (Date) ((DateFormat) fmt).parse("2011-04-12");
+        //Format fmt = new SimpleDateFormat("yyyy-MM-dd");
+        //Date date = new Date();
+        //date = (Date) ((DateFormat) fmt).parse("2011-04-12");
         SchoolDao dao = context.getBean(SchoolDao.class);
-        dao.addStudent("Guy", "Newbie", date);
+        //dao.addStudent("Guy", "Newbie", date);
 
         //Вызвать список студентов
-        System.out.println(dao.getAllStudents());
+        //System.out.println(dao.getAllStudents());
 
         //TODO дать студенту инструмент
 
 
         //TODO записать студента в группу
+        List<Performance> list = dao.getPerformance();
+        System.out.println(list);
 
         //TODO добавить группу на концерт
 
