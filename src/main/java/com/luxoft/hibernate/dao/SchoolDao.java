@@ -14,7 +14,7 @@ public interface SchoolDao {
     List<Student> getAllStudentWithInstrument(String instrument);
     void removeStudent(Student student);
     void addStudentToPerformance(Performance performance, Student student);
-
+    void saveStudent(Student student);
 
     List<Student> getByInstrumentProdDate(Date prodDate);
 
@@ -24,12 +24,16 @@ public interface SchoolDao {
     List<Instrument> getAllInstruments();
     void removeInstrument(Instrument instrument);
 
-    List<Performance> getPerformance();
-    List<Composition> getComposition();
+    List<Performance> getPerformances();
+    List<Composition> getCompositions();
 
     void removeComposition(Composition composition);
 
     void savePerformance(Performance performance);
     void saveComposition(Composition composition);
+    void saveInstrument(Instrument instrument);
+
+    void showDetails(Performance performance);
+
 
 }

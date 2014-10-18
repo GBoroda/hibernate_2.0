@@ -19,11 +19,16 @@ public class Composition {
     private String title;
     @Column(name = "AUTHOR")
     private String author;
+    @OneToMany(mappedBy = "composition")
+    @Fetch(FetchMode.JOIN)
+    private Set<Performance> performances;
 
-    public Composition(long id, String title, String author) {
-        this.id = id;
-        this.title = title;
-        this.author = author;
+    public Set<Performance> getPerformances() {
+        return performances;
+    }
+
+    public void setPerformances(Set<Performance> performances) {
+        this.performances = performances;
     }
 
     public long getId() {

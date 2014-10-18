@@ -17,13 +17,30 @@ public class Performance implements Serializable {
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @Id
-    @Column
-    private long compositionId;
+    @ManyToOne(targetEntity = Composition.class)
+    Composition composition;
+    @OneToMany(targetEntity = Student.class, cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name="PERFORMANCE_PARTICIPANTS",
+            joinColumns={@JoinColumn(name="PERFORMANCE_ID")},
+            inverseJoinColumns={@JoinColumn(name="STUDENT_ID")})
+    private Set<Student> students;
 
-    public Performance(long id, long compositionId) {
-        this.id = id;
-        this.compositionId = compositionId;
+
+
+    public Composition getComposition() {
+        return composition;
+    }
+
+    public void setComposition(Composition composition) {
+        this.composition = composition;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
+    }
+
+    public Set<Student> getStudents() {
+        return students;
     }
 
     public long getId() {
@@ -34,19 +51,12 @@ public class Performance implements Serializable {
         this.id = id;
     }
 
-    public long getCompositionId() {
-        return compositionId;
-    }
-
-    public void setCompositionId(long compositionId) {
-        this.compositionId = compositionId;
-    }
-
     @Override
     public String toString() {
         return "Performance{" +
                 "id=" + id +
-                ", compositionId=" + compositionId +
+                ", composition=" + composition +
+                ", students=" + students +
                 '}';
     }
 }

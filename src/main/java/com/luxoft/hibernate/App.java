@@ -1,13 +1,10 @@
 package com.luxoft.hibernate;
 
 import com.luxoft.hibernate.dao.SchoolDao;
-import com.luxoft.hibernate.dao.entity.Instrument;
-import com.luxoft.hibernate.dao.entity.Performance;
-import com.luxoft.hibernate.dao.entity.Student;
+import com.luxoft.hibernate.dao.entity.*;
 import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.ParseException;
 import org.h2.command.dml.Insert;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import com.luxoft.hibernate.dao.entity.PerformanceParticipants;
 
 import java.beans.Statement;
 import java.sql.*;
@@ -36,10 +33,7 @@ public class App {
 
         //TODO дать студенту инструмент
 
-
         //TODO записать студента в группу
-        List<Performance> list = dao.getPerformance();
-        System.out.println(list);
 
         //TODO добавить группу на концерт
 
@@ -52,5 +46,23 @@ public class App {
 
         //поиск студентов играющих на определенном инструменте
         //System.out.println(dao.getAllStudentWithInstrument("Guitar"));
+
+        List<Performance> list = dao.getPerformances();
+        List<Composition> compositions = dao.getCompositions();
+        List<Student> students = dao.getAllStudents();
+
+        Performance performance = list.get(2);
+
+        dao.showDetails(performance);
+
+        Composition composition = compositions.get(0);
+
+
+
+        Student student = students.get(1);
+        dao.addStudentToPerformance(performance, student);
+
+        String s = "";
+
     }
 }

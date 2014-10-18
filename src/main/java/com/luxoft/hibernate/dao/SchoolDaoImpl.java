@@ -34,12 +34,12 @@ public class SchoolDaoImpl implements SchoolDao {
     }
 
     @Override
-    public List<Performance> getPerformance() {
+    public List<Performance> getPerformances() {
         return sessionFactory.getCurrentSession().createQuery("from Performance").list();
     }
 
     @Override
-    public List<Composition> getComposition() {
+    public List<Composition> getCompositions() {
         return sessionFactory.getCurrentSession().createQuery("from Composition").list();
     }
 
@@ -83,6 +83,11 @@ public class SchoolDaoImpl implements SchoolDao {
     }
 
     @Override
+    public void saveStudent(Student student) {
+        sessionFactory.getCurrentSession().save(student);
+    }
+
+    @Override
     @Transactional(readOnly = false)
     public Long addStudent(String firstName, String lastName, Date birth_date) {
         Student student = new Student(firstName, lastName, birth_date);
@@ -101,9 +106,20 @@ public class SchoolDaoImpl implements SchoolDao {
         sessionFactory.getCurrentSession().delete(instrument);
     }
 
+
     @Override
     public void saveComposition(Composition composition) {
         sessionFactory.getCurrentSession().save(composition);
+    }
+
+    @Override
+    public void saveInstrument(Instrument instrument) {
+        sessionFactory.getCurrentSession().save(instrument);
+    }
+
+    @Override
+    public void showDetails(Performance performance) {
+        System.out.println(performance.toString());
     }
 
 }
